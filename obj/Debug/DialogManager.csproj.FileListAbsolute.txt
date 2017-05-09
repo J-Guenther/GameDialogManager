@@ -1,0 +1,11 @@
+H:\Informatik\dotnet\DialogManager\DialogManager\bin\Debug\DialogManager.exe.config
+H:\Informatik\dotnet\DialogManager\DialogManager\bin\Debug\DialogManager.exe
+H:\Informatik\dotnet\DialogManager\DialogManager\bin\Debug\DialogManager.pdb
+H:\Informatik\dotnet\DialogManager\DialogManager\bin\Debug\System.Data.SQLite.dll
+H:\Informatik\dotnet\DialogManager\DialogManager\bin\Debug\System.Data.SQLite.xml
+H:\Informatik\dotnet\DialogManager\DialogManager\obj\Debug\DialogManager.csprojResolveAssemblyReference.cache
+H:\Informatik\dotnet\DialogManager\DialogManager\obj\Debug\DialogManager.Form1.resources
+H:\Informatik\dotnet\DialogManager\DialogManager\obj\Debug\DialogManager.Properties.Resources.resources
+H:\Informatik\dotnet\DialogManager\DialogManager\obj\Debug\DialogManager.csproj.GenerateResource.Cache
+H:\Informatik\dotnet\DialogManager\DialogManager\obj\Debug\DialogManager.exe
+H:\Informatik\dotnet\DialogManager\DialogManager\obj\Debug\DialogManager.pdb
