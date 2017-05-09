@@ -23,7 +23,11 @@ namespace DialogManager {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            DgvDataBase.ForeColor
+            //DgvDataBase.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(62, 62, 64);
+            //DgvDataBase.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(181, 241, 241);
+            DgvDataBase.DefaultCellStyle.BackColor = Color.FromArgb(62, 62, 64);
+            //DgvDataBase.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(62, 62, 64);
+            DgvDataBase.EnableHeadersVisualStyles = false;
         }
 
         protected override CreateParams CreateParams
@@ -307,8 +311,78 @@ namespace DialogManager {
             SaveDialogLineContent();
             UpdateDataGridByActiveDlc();
         }
+
+        private string UpdateReaderPreview() {
+            // Control Variables
+            int idCounter = 0;
+            int startId = 0;
+            DataGridViewRow startRow = null;
+            DialogLine startLine = null;
+            List<int> jumpPoints = new List<int>();
+            int idCount = 0;
+
+            string content = "";
+
+            List<int> idList = new List<int>();
+            foreach(DataGridViewRow row in DgvDataBase.Rows) {
+                idList.Add(Convert.ToInt32(row.Cells[0].Value));
+            }
+            idCount = idList.Count;
+
+            // Get Start
+            foreach (DataGridViewRow row in DgvDataBase.Rows) {
+                if (Convert.ToInt32(row.Cells[4].Value) == -1)
+                    startRow = row;
+            }
+            startId = Convert.ToInt32(startRow.Cells[0].Value);
+            startLine = db.GetLineById(startId);
+
+            GoThroughNexts(startLine, ref content, ref jumpPoints, ref idCounter, ref idCount);
+
+            return content;
+        }
+
+        private void GoThroughNexts(DialogLine jumpLine, ref string content, ref List<int> jumpPoints, ref int idCounter, ref int max) {
+            idCounter++;
+            if (idCounter > max)
+                return;
+
+            if (jumpLine.IsEntry)
+                content += "[ENTRY POINT]\n";
+
+            content += "(" + jumpLine.Id + ") " + jumpLine.Character + ": " + jumpLine.ContentGer;
+            int activeNexts = jumpLine.activeNexts;
+            DialogLine currentLine = null;
+            jumpPoints.Add(jumpLine.Id);
+
+            if (activeNexts > 1) {
+                content += " [JUMP]\n";
+                for (int j = 0; j < activeNexts; j++) {
+                    currentLine = db.GetLineById(jumpLine.next[j]);
+                    content += "\t" + (j+1) + ": " + currentLine.ContentGer + "[JMP->" + jumpLine.next[j] + "]\n";
+                }
+                content += "\n";
+                for (int j = 0; j < activeNexts; j++) {
+                    currentLine = db.GetLineById(jumpLine.next[j]);
+                    GoThroughNexts(currentLine, ref content, ref jumpPoints, ref idCounter, ref max);
+                }
+            }
+            else {
+                // Is currentLine the last line?
+                if (jumpLine.next[0] == 0 || jumpPoints.Contains(jumpLine.next[0])) {
+                    content += "\nENDE\n\n";
+                    return;
+                }
+                else {
+                    content += "\n";
+                    currentLine = db.GetLineById(jumpLine.next[0]);
+                    GoThroughNexts(currentLine, ref content, ref jumpPoints, ref idCounter, ref max);
+                }
+            }
+        }
+
+        private void CmdUpdateReaderPreview_Click(object sender, EventArgs e) {
+            BoxPreview.Text = UpdateReaderPreview();
+        }
     }
-
-    
-
 }

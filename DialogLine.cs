@@ -32,7 +32,7 @@ namespace DialogManager {
             isEntry = false;
             isJump = false;
             previous = -1;
-            next = new List<int>(new int[] { -1, -1, -1, -1 });
+            next = new List<int>(new int[] { 0, 0, 0, 0 });
             activeNexts = 0;
             requirements = "None";
             eventTrigger = 0;
@@ -50,7 +50,7 @@ namespace DialogManager {
             isEntry = false;
             isJump = false;
             previous = -1;
-            next = new List<int>(new int[] { -1, -1, -1, -1 });
+            next = new List<int>(new int[] { 0, 0, 0, 0 });
             activeNexts = 0;
             requirements = "None";
             eventTrigger = 0;

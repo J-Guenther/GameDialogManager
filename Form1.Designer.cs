@@ -42,8 +42,8 @@
             this.BoxCharacterName = new System.Windows.Forms.TextBox();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.BoxContentGer = new System.Windows.Forms.RichTextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.BoxContentEng = new System.Windows.Forms.RichTextBox();
             this.NumPrevious = new System.Windows.Forms.NumericUpDown();
             this.NumNext0 = new System.Windows.Forms.NumericUpDown();
@@ -78,6 +78,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LblPrevious = new System.Windows.Forms.Label();
             this.LblPreview = new System.Windows.Forms.Label();
+            this.CmdUpdateReaderPreview = new System.Windows.Forms.Button();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.googleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MnuMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumChapterSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumSceneSelect)).BeginInit();
@@ -100,7 +104,10 @@
             // 
             this.MnuMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(55)))));
             this.MnuMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.exportToolStripMenuItem,
+            this.googleToolStripMenuItem,
+            this.aboutToolStripMenuItem});
             this.MnuMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MnuMenuStrip.Name = "MnuMenuStrip";
             this.MnuMenuStrip.Size = new System.Drawing.Size(1723, 24);
@@ -326,6 +333,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "German";
             // 
+            // BoxContentGer
+            // 
+            this.BoxContentGer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.BoxContentGer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.BoxContentGer.Location = new System.Drawing.Point(-4, 4);
+            this.BoxContentGer.Name = "BoxContentGer";
+            this.BoxContentGer.Size = new System.Drawing.Size(426, 151);
+            this.BoxContentGer.TabIndex = 0;
+            this.BoxContentGer.Text = "";
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.BoxContentEng);
@@ -337,16 +354,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "English";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // BoxContentGer
-            // 
-            this.BoxContentGer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.BoxContentGer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.BoxContentGer.Location = new System.Drawing.Point(-4, 4);
-            this.BoxContentGer.Name = "BoxContentGer";
-            this.BoxContentGer.Size = new System.Drawing.Size(426, 151);
-            this.BoxContentGer.TabIndex = 0;
-            this.BoxContentGer.Text = "";
             // 
             // BoxContentEng
             // 
@@ -667,6 +674,7 @@
             // 
             this.BoxPreview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.BoxPreview.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BoxPreview.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BoxPreview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.BoxPreview.Location = new System.Drawing.Point(1173, 544);
             this.BoxPreview.Name = "BoxPreview";
@@ -701,12 +709,48 @@
             this.LblPreview.TabIndex = 46;
             this.LblPreview.Text = "The Reader:";
             // 
+            // CmdUpdateReaderPreview
+            // 
+            this.CmdUpdateReaderPreview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.CmdUpdateReaderPreview.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.CmdUpdateReaderPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmdUpdateReaderPreview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.CmdUpdateReaderPreview.Location = new System.Drawing.Point(1063, 817);
+            this.CmdUpdateReaderPreview.Name = "CmdUpdateReaderPreview";
+            this.CmdUpdateReaderPreview.Size = new System.Drawing.Size(104, 23);
+            this.CmdUpdateReaderPreview.TabIndex = 47;
+            this.CmdUpdateReaderPreview.Text = "Update Preview";
+            this.CmdUpdateReaderPreview.UseVisualStyleBackColor = false;
+            this.CmdUpdateReaderPreview.Click += new System.EventHandler(this.CmdUpdateReaderPreview_Click);
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.exportToolStripMenuItem.Text = "Export";
+            // 
+            // googleToolStripMenuItem
+            // 
+            this.googleToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.googleToolStripMenuItem.Name = "googleToolStripMenuItem";
+            this.googleToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.googleToolStripMenuItem.Text = "Google";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.ClientSize = new System.Drawing.Size(1723, 852);
+            this.Controls.Add(this.CmdUpdateReaderPreview);
             this.Controls.Add(this.LblPreview);
             this.Controls.Add(this.LblPrevious);
             this.Controls.Add(this.pictureBox1);
@@ -758,6 +802,7 @@
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.MainMenuStrip = this.MnuMenuStrip;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DialogManager v 1.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MnuMenuStrip.ResumeLayout(false);
@@ -838,6 +883,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label LblPrevious;
         private System.Windows.Forms.Label LblPreview;
+        private System.Windows.Forms.Button CmdUpdateReaderPreview;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem googleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 
